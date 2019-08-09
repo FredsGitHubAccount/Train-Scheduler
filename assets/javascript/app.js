@@ -39,7 +39,7 @@ var firebaseConfig = {
     else {
           // push my created object into the database
         firstTrainTime = moment($("#first-train-input").val().trim(),"HH:mm").subtract(1,"years").format("X")
-        database.ref().push({
+        database.ref("/New-Train").push({
         name,
         destination,
         firstTrainTime,
@@ -56,7 +56,7 @@ var firebaseConfig = {
   })
     // whenever page is loaded or another object is added, run the calculations
     
-  database.ref().on("child_added",function(snapshot){
+  database.ref("/New-Train").on("child_added",function(snapshot){
 
     let name = snapshot.val().name
     let destination = snapshot.val().destination    
