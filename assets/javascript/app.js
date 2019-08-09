@@ -54,8 +54,7 @@ var firebaseConfig = {
   }
 
   })
-    // Whenever page is loaded or another object is added, run the calculations
-
+    // whenever page is loaded or another object is added, run the calculations
     
   database.ref().on("child_added",function(snapshot){
 
@@ -64,14 +63,15 @@ var firebaseConfig = {
     let frequency = snapshot.val().frequency
     let firstTrainTime = snapshot.val().firstTrainTime
 
+
     let remainder = moment().diff(moment(firstTrainTime,"X"), "minutes") % frequency;  
     let minutes = frequency - remainder;
-    
     let arrival = moment().add(minutes, "minutes").format("hh:mm A");
 
 
-// dynamically generate content based on what is in firebase
-let newTr = $("<tr>")
+
+// dynamically generate content based on what is in firebase & after calculations
+    let newTr = $("<tr>")
     newTr.html(`<td>${name}</td><td>${destination}</td><td>${frequency}</td><td>${arrival}</td><td>${minutes}</td>`)
 
     $("#main-holder").append(newTr)
