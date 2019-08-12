@@ -6,6 +6,7 @@
 body {
     background-image: url("https://i.ytimg.com/vi/5WKew7JZ9DQ/maxresdefault.jpg");
     background-size: 100%;
+    margin-top: 25px;
 }
 
 .error {
