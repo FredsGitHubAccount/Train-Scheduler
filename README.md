@@ -4,7 +4,7 @@
 
 ## Objective 
 
-Create a train scheduler that tracks future trains on a minutely basis using a database 
+Create a train scheduler that tracks past & future trains on a minutely basis using a database. 
 
 ## Live link
 Open the live link at https://fredsgithubaccount.github.io/Train-Scheduler/

@@ -1,16 +1,16 @@
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-// created a shortcut for firebase.database()
+// Created a shortcut for firebase.database()
 let database = firebase.database()
 
-// declared variables that are empty & will be given values upon the click functions
+// Declared variables that are empty & will be given values upon the click functions
 let name = ""
 let destination = ""
 let firstTrainTime = ""
 let frequency = ""
 
-// will extract the values from the form and check to see if they are valid
+// Will extract the values from the form and check to see if they are valid
 $("#submit-train").on("click", function (event) {
 
   event.preventDefault();
@@ -25,7 +25,8 @@ $("#submit-train").on("click", function (event) {
     return;
   }
   else {
-    // push my created object into the database
+
+    // Push my created object into the database if it passes the validation and formats the time
     firstTrainTime = moment(firstTrainTime, "HH:mm").format("x");
     database.ref("/New-Train").push({
       name,
@@ -42,8 +43,8 @@ $("#submit-train").on("click", function (event) {
   }
 
 })
-// whenever page is loaded or another object is added, run the calculations
 
+// Whenever page is loaded or another object is added, run the calculations
 database.ref("/New-Train").on("child_added", function (snapshot) {
 
   let name = snapshot.val().name
@@ -53,6 +54,7 @@ database.ref("/New-Train").on("child_added", function (snapshot) {
 
   let arrival, minutes;
 
+  // Checks to see if the train is in the future or in the past
   if(moment().isBefore(firstTrainTime)){
     arrival = firstTrainTime.format("HH:mm a");
     minutes = firstTrainTime.diff(moment(), 'minutes') + 1
@@ -69,7 +71,7 @@ database.ref("/New-Train").on("child_added", function (snapshot) {
 
 
 
-  // dynamically generate content based on what is in firebase & after calculations
+  // Dynamically generates content based on what is in firebase & after calculations
   let newTr = $("<tr>")
   newTr.html(`<td>${name}</td><td>${destination}</td><td>${frequency}</td><td>${arrival}</td><td>${minutes}</td>`)
 
