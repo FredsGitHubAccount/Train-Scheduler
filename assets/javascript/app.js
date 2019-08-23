@@ -1,7 +1,7 @@
-let myKey = config.apiKey
+var mykey = config.MY_KEY;
 
 var firebaseConfig = {
-  apiKey: myKey,
+  apiKey: mykey,
   authDomain: "freds-train-scheduler.firebaseapp.com",
   databaseURL: "https://freds-train-scheduler.firebaseio.com",
   projectId: "freds-train-scheduler",
@@ -89,6 +89,7 @@ database.ref("/New-Train").on("child_added", function (snapshot) {
   $("#main-holder").append(newTr)
 
 })
+
 
 
 
