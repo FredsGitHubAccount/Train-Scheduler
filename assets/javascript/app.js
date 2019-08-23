@@ -72,7 +72,7 @@ database.ref("/New-Train").on("child_added", function (snapshot) {
   } else {
     let remainder = Math.abs(moment().diff(firstTrainTime, 'minutes')) % frequency;
     minutes = frequency - remainder;
-    arrival = moment().add(minutes, "minutes").format("HH:mm a")
+    arrival = moment().add(minutes, "minutes").format("hh:mm a")
   }
 
 
