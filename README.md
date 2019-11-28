@@ -9,6 +9,9 @@ Create a train scheduler that tracks past & future trains on a minutely basis us
 ## Live link
 Open the live link at https://fredsgithubaccount.github.io/Train-Scheduler/
 
+## Screenshot
+![Screenshot](/assets/images/trainsched.png)
+
 ### Technologies
 Front-End
 - [ ] HTML
